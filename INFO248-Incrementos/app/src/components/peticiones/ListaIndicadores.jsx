@@ -5,7 +5,8 @@ class ListaIndicadores extends React.Component {
 
   state = {
     idIndicadoresA: [],
-    idIndicadoresD: []
+    idIndicadoresD: [],
+    idIndicadoresE: []
   }
 
   onAprobarClick = () => {
@@ -15,6 +16,10 @@ class ListaIndicadores extends React.Component {
     for(let i=0; i < this.state.idIndicadoresD.length ; i++){ 
         axios.put(`http://localhost:4000/indicadores/deleteindicadores/${this.state.idIndicadoresD[i]}-Eliminar`)
     }
+    for(let i=0; i < this.state.idIndicadoresE.length ; i++){ 
+        axios.put(`http://localhost:4000/indicadores/setaprobado/${this.state.idIndicadoresE[i]}-Editar`)
+    }
+
   }
 
   onRechazarClick = () => {
@@ -78,7 +83,7 @@ class ListaIndicadores extends React.Component {
                         this.state.idIndicadoresA.push(e.target.value)
                     }/>
                 </td>
-                :
+                : indicador.Peticion === 'Eliminar' ?
                 <td>
                     <input
                     className='checkbox'
@@ -89,6 +94,19 @@ class ListaIndicadores extends React.Component {
                         item !== e.target.value) 
                         : 
                         this.state.idIndicadoresD.push(e.target.value)
+                    }/>
+                </td>
+                : 
+                <td>
+                    <input
+                    className='checkbox'
+                    type="checkbox"
+                    name="lang"
+                    value={indicador.id}
+                    onChange={e => this.state.idIndicadoresE.includes(e.target.value) ? this.state.idIndicadoresE = this.state.idIndicadoresE.filter((item) => 
+                        item !== e.target.value) 
+                        : 
+                        this.state.idIndicadoresE.push(e.target.value)
                     }/>
                 </td>
                 }

@@ -20,7 +20,7 @@ mostrarOverlay, posicionModal, indicador}) => {
     e.preventDefault();
 
     axios.put('http://localhost:4000/indicadores/editarindicador',{
-      id : (indicadorAux.CalificacionCORFO.charAt(0) + indicadorAux.NumeroIndicador),
+      id : indicadorAux.id,
       CalificacionCORFO : indicadorAux.CalificacionCORFO,
       NumeroIndicador : indicadorAux.NumeroIndicador,
       MisionUniversitaria : indicadorAux.MisionUniversitaria,
@@ -30,7 +30,8 @@ mostrarOverlay, posicionModal, indicador}) => {
       Unidad : indicadorAux.Unidad,
       FuenteInformacion : indicadorAux.FuenteInformacion,
       Responsable : indicadorAux.Responsable,
-      Frecuencia : indicadorAux.Frecuencia
+      Frecuencia : indicadorAux.Frecuencia,
+      idAux: (indicadorAux.CalificacionCORFO.charAt(0) + indicadorAux.NumeroIndicador)
       // idMetrica : this.state.idMetrica,
       // idMeta : this.state.idMeta
     })
