@@ -64,8 +64,26 @@ class indicadoresServicios{
         })   
     }
 
-    async EditarIndicador(res,id) {
-        const ADD_QUERY = `UPDATE indicadores SET Peticion = 'Eliminar', Aprobado = 0 WHERE id = '${id}';`
+    // async setPeticionCambiar(res,id) {
+    //     const ADD_QUERY = `UPDATE indicadores SET Peticion = 'Cambiar', Aprobado = 0 WHERE id = '${id}';`
+    //     connection.query(ADD_QUERY, (err) =>{
+    //         if(err) console.log(err)
+    //     })   
+    // }
+
+    async editarIndicador(res,req) {
+        const ADD_QUERY = `UPDATE indicadores SET 
+        CalificacionCORFO = "${req.body.CalificacionCORFO}", 
+        NumeroIndicador = "${req.body.NumeroIndicador}",
+        MisionUniversitaria = "${req.body.MisionUniversitaria}",
+        nombre = "${req.body.nombre}",
+        TipoIndicador = "${req.body.TipoIndicador}",
+        eje = "${req.body.eje}",
+        Unidad = "${req.body.Unidad}",
+        FuenteInformacion = "${req.body.FuenteInformacion}",
+        Responsable = "${req.body.Responsable}",
+        Frecuencia = "${req.body.Frecuencia}",
+        Aprobado = 1 WHERE id = '${req.body.id}';`
         connection.query(ADD_QUERY, (err) =>{
             if(err) console.log(err)
         })   

@@ -4,7 +4,7 @@ import axios from "axios";
 import Modal from "../Modal"
 import styled from 'styled-components';
 
-
+// Usado hoy
 export default function  TablaIndicadores2() {
   const [indicadores, setIndicadores] = useState([]);
 
@@ -24,8 +24,6 @@ export default function  TablaIndicadores2() {
     };
     fetchPosts();
   }, );
-
-
 
   return (
   <div>
@@ -84,6 +82,7 @@ export default function  TablaIndicadores2() {
               estado ={estadoModal1}
               cambiarEstado={cambiarEstadoModal1}
               titulo={`Editar indicador ID: ${indi.id}`}
+              key = {indicador.id}
               indicador = {indi}
               mostrarHeader={true}
               mostrarOverlay={true}

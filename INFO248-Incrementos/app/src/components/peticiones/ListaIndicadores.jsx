@@ -36,6 +36,10 @@ class ListaIndicadores extends React.Component {
         color: 'rgb(170, 25, 25)'
     };
 
+    const EStyle = {
+        color: "blue"
+    };
+
     return(
     <div>
 
@@ -102,8 +106,12 @@ class ListaIndicadores extends React.Component {
                 <td>{indicador.Frecuencia}</td>
                 {indicador.Peticion === 'Añadir'?
                     <td style={AStyle}>{indicador.Peticion}</td>
-                    :
-                    <td style={DStyle}>{indicador.Peticion}</td>}
+                    : indicador.Peticion === 'Eliminar' ?
+                    <td style={DStyle}>{indicador.Peticion}</td>
+                    : 
+                    <td style={EStyle}>{indicador.Peticion}</td>
+                    
+                }
             </tr>
             :
             <div/>
