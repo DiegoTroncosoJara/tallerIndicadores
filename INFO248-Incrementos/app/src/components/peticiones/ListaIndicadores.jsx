@@ -22,6 +22,7 @@ class ListaIndicadores extends React.Component {
         axios.put(`http://localhost:4000/indicadores/deleteindicadores/${this.state.idIndicadoresA[i]}-Añadir`)
     }
     for(let i=0; i < this.state.idIndicadoresD.length ; i++){ 
+        console.log(this.state.idIndicadoresD[i]);
         axios.put(`http://localhost:4000/indicadores/setaprobado/${this.state.idIndicadoresD[i]}-Eliminar`)
     }
   }

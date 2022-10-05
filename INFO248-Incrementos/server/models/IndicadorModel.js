@@ -58,7 +58,7 @@ class indicadoresServicios{
     }
 
     async setPeticion(res,id) {
-        const ADD_QUERY = `UPDATE indicadores SET CalificacionCORFO = ${req.body.CalificacionCORFO}, Aprobado = 0 WHERE id = '${id}';`
+        const ADD_QUERY = `UPDATE indicadores SET Peticion = 'Eliminar', Aprobado = 0 WHERE id = '${id}';`
         connection.query(ADD_QUERY, (err) =>{
             if(err) console.log(err)
         })   
