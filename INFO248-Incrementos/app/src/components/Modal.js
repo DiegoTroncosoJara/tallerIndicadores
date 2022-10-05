@@ -13,14 +13,14 @@ mostrarOverlay, posicionModal, indicador}) => {
   
   const [indicadorAux, SetIndicadorAux] = useState(indicador);
   // console.log("Este si csm: ", indicador);
-  // console.log("Este no : ", indicadorAux);
+  
 
 
   function Guardar(e){
     e.preventDefault();
-    console.log("asasas: ", indicadorAux);
+
     axios.put('http://localhost:4000/indicadores/editarindicador',{
-      id : indicadorAux.id,
+      id : (indicadorAux.CalificacionCORFO.charAt(0) + indicadorAux.NumeroIndicador),
       CalificacionCORFO : indicadorAux.CalificacionCORFO,
       NumeroIndicador : indicadorAux.NumeroIndicador,
       MisionUniversitaria : indicadorAux.MisionUniversitaria,

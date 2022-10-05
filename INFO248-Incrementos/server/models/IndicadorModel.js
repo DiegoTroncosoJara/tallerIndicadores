@@ -83,7 +83,7 @@ class indicadoresServicios{
         FuenteInformacion = "${req.body.FuenteInformacion}",
         Responsable = "${req.body.Responsable}",
         Frecuencia = "${req.body.Frecuencia}",
-        Aprobado = 0 WHERE id = '${req.body.id}';`
+        Aprobado = 1 WHERE id = '${req.body.id}';`
         connection.query(ADD_QUERY, (err) =>{
             if(err) console.log(err)
         })   
