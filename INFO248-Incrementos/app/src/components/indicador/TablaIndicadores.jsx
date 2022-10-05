@@ -26,6 +26,25 @@ export default function  TablaIndicadores2() {
   }, );
 
 
+  // Editar = () => {
+  //   axios.post('http://localhost:4000/indicadores/editarIndicador',{
+  //     id: (this.state.CalificacionCORFO.charAt(0) + this.state.NumeroIndicador), //string.charAt(0)
+  //     CalificacionCORFO : this.state.CalificacionCORFO,
+  //     NumeroIndicador : this.state.NumeroIndicador,
+  //     MisionUniversitaria : this.state.MisionUniversitaria,
+  //     nombre : this.state.nombre,
+  //     TipoIndicador: this.state.TipoIndicador,
+  //     eje : this.state.eje,
+  //     Unidad : this.state.Unidad,
+  //     FuenteInformacion : this.state.FuenteInformacion,
+  //     Responsable : this.state.Responsable,
+  //     Frecuencia : this.state.Frecuencia,
+  //     idMetrica : this.state.idMetrica,
+  //     idMeta : this.state.idMeta
+  //   })
+  // }
+
+
 
   return (
   <div>
@@ -84,6 +103,7 @@ export default function  TablaIndicadores2() {
               estado ={estadoModal1}
               cambiarEstado={cambiarEstadoModal1}
               titulo={`Editar indicador ID: ${indi.id}`}
+              key = {indicador.id}
               indicador = {indi}
               mostrarHeader={true}
               mostrarOverlay={true}

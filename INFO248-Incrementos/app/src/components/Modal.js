@@ -2,8 +2,8 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import styled from 'styled-components';
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { ArrowRight } from 'react-bootstrap-icons';
-import {CloseOutline} from '@styled-icons/evaicons-outline/CloseOutline'
+
+import axios from 'axios'
 
 
 
@@ -12,28 +12,32 @@ const  Modal = ({children, estado, cambiarEstado, titulo = "xd", mostrarHeader,
 mostrarOverlay, posicionModal, indicador}) => {
   
   const [indicadorAux, SetIndicadorAux] = useState(indicador);
-  console.log(indicador);
-
-  // Guardar = () => {
-  //   axios.put('http://localhost:4000/indicadores/addindicadores',{
-  //     id: (this.state.CalificacionCORFO.charAt(0) + this.state.NumeroIndicador), //string.charAt(0)
-  //     CalificacionCORFO : this.state.CalificacionCORFO,
-  //     NumeroIndicador : this.state.NumeroIndicador,
-  //     MisionUniversitaria : this.state.MisionUniversitaria,
-  //     nombre : this.state.nombre,
-  //     TipoIndicador: this.state.TipoIndicador,
-  //     eje : this.state.eje,
-  //     Unidad : this.state.Unidad,
-  //     FuenteInformacion : this.state.FuenteInformacion,
-  //     Responsable : this.state.Responsable,
-  //     Frecuencia : this.state.Frecuencia,
-  //     idMetrica : this.state.idMetrica,
-  //     idMeta : this.state.idMeta
-  //   })
-  // }
+  // console.log("Este si csm: ", indicador);
+  // console.log("Este no : ", indicadorAux);
 
 
+  function Guardar(e){
+    e.preventDefault();
+    console.log("asasas: ", indicadorAux);
+    axios.put('http://localhost:4000/indicadores/editarindicador',{
+      id : indicadorAux.id,
+      CalificacionCORFO : indicadorAux.CalificacionCORFO,
+      NumeroIndicador : indicadorAux.NumeroIndicador,
+      MisionUniversitaria : indicadorAux.MisionUniversitaria,
+      nombre : indicadorAux.nombre,
+      TipoIndicador: indicadorAux.TipoIndicador,
+      eje : indicadorAux.eje,
+      Unidad : indicadorAux.Unidad,
+      FuenteInformacion : indicadorAux.FuenteInformacion,
+      Responsable : indicadorAux.Responsable,
+      Frecuencia : indicadorAux.Frecuencia
+      // idMetrica : this.state.idMetrica,
+      // idMeta : this.state.idMeta
+    })
+  }
+  
 
+  
   return (
     <>
         {estado &&
@@ -148,9 +152,7 @@ mostrarOverlay, posicionModal, indicador}) => {
                         )}
                       </select> */}
 
-                      <button onClick={
-                        () => this.onAddClick()
-                      }>Enviar solicitud</button>
+                      <button onClick={Guardar}>Enviar</button>
                     </form>
                     </TablaModal>
 
@@ -189,19 +191,21 @@ const Overlay = styled.div`
 const ContenedorModal = styled.div`
   width: 800px;
   min-height: 100px;
+  margin-top: 5%;
+  
   background: #fff;
   position: relative;
   border-radius: 5px;
   box-shadow: rgba(100,100,111, 0.2) 0px 7px 29px 0px;
-  padding: 20px;
+  padding: 10px;
 `;
 
 const EncabezadoModal = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #E8E8E8;
 
   h3 {
