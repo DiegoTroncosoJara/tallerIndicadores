@@ -52,8 +52,10 @@ class indicadoresServicios{
 
         if(solicitud === 'Añadir'){
             sHistorial.createHistorial(0,{body: { id_imm: id, tipo: 1, solicitud: 'Añadir', estado: 'Aprobado', fecha: now }} );
-        }else{
+        }else if(solicitud === 'Eliminar'){
             sHistorial.createHistorial(0,{body: { id_imm: id, tipo: 1, solicitud: 'Eliminar', estado: 'Rechazado', fecha: now }} );  
+        }else{
+            sHistorial.createHistorial(0,{body: { id_imm: id, tipo: 1, solicitud: 'Editar', estado: 'Aprobado', fecha: now }} );
         }
     }
 
@@ -73,6 +75,7 @@ class indicadoresServicios{
 
     async editarIndicador(res,req) {
         const ADD_QUERY = `UPDATE indicadores SET 
+        id = "${req.body.idAux}",
         CalificacionCORFO = "${req.body.CalificacionCORFO}", 
         NumeroIndicador = "${req.body.NumeroIndicador}",
         MisionUniversitaria = "${req.body.MisionUniversitaria}",
@@ -83,7 +86,7 @@ class indicadoresServicios{
         FuenteInformacion = "${req.body.FuenteInformacion}",
         Responsable = "${req.body.Responsable}",
         Frecuencia = "${req.body.Frecuencia}",
-        Aprobado = 1 WHERE id = '${req.body.id}';`
+        Aprobado = 0, Peticion = 'Editar' WHERE id = '${req.body.id}';`
         connection.query(ADD_QUERY, (err) =>{
             if(err) console.log(err)
         })   
