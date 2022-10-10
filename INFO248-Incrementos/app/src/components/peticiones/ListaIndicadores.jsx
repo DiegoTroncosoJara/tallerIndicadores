@@ -19,8 +19,19 @@ class ListaIndicadores extends React.Component {
 
 
     for(let i=0; i < this.state.idIndicadoresE.length ; i++){ 
-        axios.delete(`http://localhost:4000/indicadores/eliminarindicador/${this.state.idIndicadoresE[i].id_editado}`)
-        //axios.put(`http://localhost:4000/indicadores/setaprobado/${this.state.idIndicadoresE[i]}-Editar`)
+        let e = this.state.idIndicadoresE[i];
+        console.log("e: ", e);
+        let ids_aux = e.split(",");
+        console.log("ids_aux: ", ids_aux, "tipo: ", typeof ids_aux);
+        
+        
+        let id_eliminar = ids_aux[1];
+        let id_reemplazar = ids_aux[0];
+        
+        //console.log("funciona: ", myArray);
+        axios.delete(`http://localhost:4000/indicadores/eliminarindicador/${id_eliminar}`)
+        axios.put(`http://localhost:4000/indicadores/setaprobado/${id_reemplazar}-Editar`)
+        console.log("termina");
     }
 
   }
@@ -106,7 +117,7 @@ class ListaIndicadores extends React.Component {
                     className='checkbox'
                     type="checkbox"
                     name="lang"
-                    value={indicador.id}
+                    value={[indicador.id, indicador.id_editado]}
                     onChange={e => this.state.idIndicadoresE.includes(e.target.value) ? this.state.idIndicadoresE = this.state.idIndicadoresE.filter((item) => 
                         item !== e.target.value) 
                         : 

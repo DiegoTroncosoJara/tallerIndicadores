@@ -88,6 +88,7 @@ class indicadoresServicios{
         Frecuencia,
         Aprobado,
         Peticion,
+        antiguaid,
         id_editado 
         ) VALUES(
         "${req.body.idAux}",
@@ -96,14 +97,14 @@ class indicadoresServicios{
         "${req.body.MisionUniversitaria}",
         "${req.body.nombre}",
         "${req.body.TipoIndicador}",
-        
         "${req.body.eje}",
         "${req.body.Unidad}",
         "${req.body.FuenteInformacion}",
         "${req.body.Responsable}",
         "${req.body.Frecuencia}",
-        0,
-        'Editar',
+        "${req.body.Aprobado}",
+        "${req.body.Peticion}",
+        "${req.body.antiguaid}",
         "${req.body.id}"
         );`
         connection.query(ADD_QUERY, (err) =>{
