@@ -16,8 +16,11 @@ class ListaIndicadores extends React.Component {
     for(let i=0; i < this.state.idIndicadoresD.length ; i++){ 
         axios.put(`http://localhost:4000/indicadores/deleteindicadores/${this.state.idIndicadoresD[i]}-Eliminar`)
     }
+
+
     for(let i=0; i < this.state.idIndicadoresE.length ; i++){ 
-        axios.put(`http://localhost:4000/indicadores/setaprobado/${this.state.idIndicadoresE[i]}-Editar`)
+        axios.delete(`http://localhost:4000/indicadores/eliminarindicador/${this.state.idIndicadoresE[i].id_editado}`)
+        //axios.put(`http://localhost:4000/indicadores/setaprobado/${this.state.idIndicadoresE[i]}-Editar`)
     }
 
   }

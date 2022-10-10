@@ -74,23 +74,70 @@ class indicadoresServicios{
     // }
 
     async editarIndicador(res,req) {
-        const ADD_QUERY = `UPDATE indicadores SET 
-        id = "${req.body.idAux}",
-        CalificacionCORFO = "${req.body.CalificacionCORFO}", 
-        NumeroIndicador = "${req.body.NumeroIndicador}",
-        MisionUniversitaria = "${req.body.MisionUniversitaria}",
-        nombre = "${req.body.nombre}",
-        TipoIndicador = "${req.body.TipoIndicador}",
-        eje = "${req.body.eje}",
-        Unidad = "${req.body.Unidad}",
-        FuenteInformacion = "${req.body.FuenteInformacion}",
-        Responsable = "${req.body.Responsable}",
-        Frecuencia = "${req.body.Frecuencia}",
-        Aprobado = 0, Peticion = 'Editar' WHERE id = '${req.body.id}';`
+        const ADD_QUERY = `INSERT INTO indicadores(
+        id,
+        CalificacionCORFO,
+        NumeroIndicador,
+        MisionUniversitaria,
+        nombre,
+        TipoIndicador,
+        eje,
+        Unidad,
+        FuenteInformacion,
+        Responsable,
+        Frecuencia,
+        Aprobado,
+        Peticion,
+        id_editado 
+        ) VALUES(
+        "${req.body.idAux}",
+        "${req.body.CalificacionCORFO}", 
+        "${req.body.NumeroIndicador}",
+        "${req.body.MisionUniversitaria}",
+        "${req.body.nombre}",
+        "${req.body.TipoIndicador}",
+        
+        "${req.body.eje}",
+        "${req.body.Unidad}",
+        "${req.body.FuenteInformacion}",
+        "${req.body.Responsable}",
+        "${req.body.Frecuencia}",
+        0,
+        'Editar',
+        "${req.body.id}"
+        );`
         connection.query(ADD_QUERY, (err) =>{
             if(err) console.log(err)
         })   
     }
+
+    async eliminarIndicador(res,id){
+        const ADD_QUERY = `DELETE FROM indicadores WHERE id = "${id}";`
+        connection.query(ADD_QUERY, (err) =>{
+            if(err) console.log(err)
+        })   
+    }
+    // async editarIndicador(res,req) {
+    //     const ADD_QUERY = `UPDATE indicadores SET 
+    //     id = "${req.body.idAux}",
+    //     CalificacionCORFO = "${req.body.CalificacionCORFO}", 
+    //     NumeroIndicador = "${req.body.NumeroIndicador}",
+    //     MisionUniversitaria = "${req.body.MisionUniversitaria}",
+    //     nombre = "${req.body.nombre}",
+    //     TipoIndicador = "${req.body.TipoIndicador}",
+    //     eje = "${req.body.eje}",
+    //     Unidad = "${req.body.Unidad}",
+    //     FuenteInformacion = "${req.body.FuenteInformacion}",
+    //     Responsable = "${req.body.Responsable}",
+    //     Frecuencia = "${req.body.Frecuencia}",
+    //     Aprobado = 0,
+    //     Peticion = 'Editar'
+    //     id_editado = "${req.body.id}" 
+    //     WHERE id = '${req.body.id}';`
+    //     connection.query(ADD_QUERY, (err) =>{
+    //         if(err) console.log(err)
+    //     })   
+    // }
 
     async deleteIndicador(res, id){
         const myArray = id.split("-");
