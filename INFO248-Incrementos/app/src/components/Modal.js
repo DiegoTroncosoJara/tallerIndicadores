@@ -31,6 +31,9 @@ mostrarOverlay, posicionModal, indicador}) => {
       FuenteInformacion : indicadorAux.FuenteInformacion,
       Responsable : indicadorAux.Responsable,
       Frecuencia : indicadorAux.Frecuencia,
+      Aprobado : 0,
+      Peticion: "Editar",
+      antiguaid: "0",
       idAux: (indicadorAux.CalificacionCORFO.charAt(0) + indicadorAux.NumeroIndicador)
       // idMetrica : this.state.idMetrica,
       // idMeta : this.state.idMeta
