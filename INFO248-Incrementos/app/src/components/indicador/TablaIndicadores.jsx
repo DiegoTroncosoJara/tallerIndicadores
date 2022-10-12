@@ -88,9 +88,6 @@ export default function  TablaIndicadores2() {
               mostrarHeader={true}
               mostrarOverlay={true}
               posicionModal={'center'}>
-              <Contenido>
-                <Boton>Guardar</Boton>
-              </Contenido>
             </Modal>
               
              

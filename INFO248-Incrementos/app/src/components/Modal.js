@@ -12,13 +12,9 @@ const  Modal = ({children, estado, cambiarEstado, titulo = "xd", mostrarHeader,
 mostrarOverlay, posicionModal, indicador}) => {
   
   const [indicadorAux, SetIndicadorAux] = useState(indicador);
-  // console.log("Este si csm: ", indicador);
-  
-
 
   function Guardar(e){
     e.preventDefault();
-
     axios.put('http://localhost:4000/indicadores/editarindicador',{
       id : indicadorAux.id,
       CalificacionCORFO : indicadorAux.CalificacionCORFO,
@@ -38,6 +34,7 @@ mostrarOverlay, posicionModal, indicador}) => {
       // idMetrica : this.state.idMetrica,
       // idMeta : this.state.idMeta
     })
+    cambiarEstado(false);
   }
   
 
@@ -129,34 +126,8 @@ mostrarOverlay, posicionModal, indicador}) => {
                         <option value="Semestral">Semestral</option>
                         <option value="Anual">Anual</option>
                       </select>
-
-                      {/* <label>Metrica</label>
-                      <select value={indicador.idMetrica} onChange={e => SetIndicadorAux({
-                        idMetrica: e.target.value
-                      })}>
-                        <option value={0}>-</option>
-                        {indicador.metricas.map((x, i) =>
-                        x.Aprobado === 1 ?
-                        <option value={x.id}>{x.nombre}</option>
-                        :
-                        <div/>
-                        )}
-                      </select>
-
-                      <label>Meta</label>
-                      <select value={indicador.idMeta} onChange={e => SetIndicadorAux({
-                        idMeta: e.target.value
-                      })}>
-                        <option value={0}>-</option>
-                        {indicador.metas.map((x, i) => 
-                        x.Aprobado === 1 ?
-                        <option value={x.id}>{x.nombre}</option>
-                        :
-                        <div/>
-                        )}
-                      </select> */}
-
                       <button onClick={Guardar}>Enviar</button>
+                      {/* <BotonCerrar onClick={() => {cambiarEstado(false); SetIndicadorAux(indicador)}}></BotonCerrar> */}
                     </form>
                     </TablaModal>
 
